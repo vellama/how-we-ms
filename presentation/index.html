@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h2>Hexagonal Architecture</h2>
+          <img src="img/ha_example.png" width="400px" />
+        </section>
+				<section>
+          <h2>Hexagonal Architecture principles</h2>
+          <ul>
+            <li>Separate User-Side, Business Logig and Server-Side</li>
+            <li>Dependencies go to Business Logic</li>
+            <li>Boundaries isolation with ports and adapters</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Why should you use Hexagonal Architecture ?</h3>
+          <ul>
+            <li>Code isolation</li>
+            <li>Flexibility with adapters</li>
+            <li>Test are easier</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Some drawbacks</h3>
+          <ul>
+            <li>code may get fat</li>
+            <li>no specific guidelines</li>
+            <li>not easy to implement for every languages/framework</li>
+          </ul>
+        </section>
+        <section>
+          <h3>User-Side</h3>
+          <p>
+            It's the code that allows interactions and uses the business logic.
+            <ul>
+              <li>Controllers</li>
+              <li>UI</li>
+              <li>Tests</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h3>Business Logic</h3>
+          <p>
+            This is where the magic happens.
+          </p>
+        </section>
+        <section>
+          <h3>Server-Side</h3>
+          <p>
+            These are services called by the business logic
+            <ul>
+              <li>data sources</li>
+              <li>external services</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h2>How do we implement this for micro-services ?</h2>
+        </section>
+        <section>
+          <h3>Domains and routes</h3>
+          <ul>
+            <li>Routes: User-Side</li>
+            <li>Domains: Business-Logic and Server-Side</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Routes</h3>
+          <p>
+            Routes are the entry points to our micro-services
+            <br>
+            They are responsibles of:
+            <ul>
+              <li>Checking request data</li>
+              <li>Use the Business-Logic layer</li>
+              <li>Do not have heavy logic</li>
+              <li>Formatting response data</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h3>Domains</h3>
+          <p>
+            Domains concentrate the code for the business logic and is splitted in:
+            <ul>
+              <li>libs</li>
+              <li>helpers</li>
+              <li>dals</li>
+              <li>adapters</li>
+              <li>converters</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h3>libs</h3>
+          <p>
+            Libs are at the top level and are the main entry points to the Business-Logic layer.
+            <br><br>
+            They can use dals, adapters, converters and helpers.
+            <br><br>
+            Libs should not be able to call one another.
+          </p>
+        </section>
+        <section>
+          <h3>helpers</h3>
+          <p>
+            Unlike libs, helpers are at the bottom level and should not be responsible of heavy logic.
+          </p>
+        </section>
+        <section>
+          <h3>dals</h3>
+          <p>
+            This is where the Data Access Layer code lies.
+            <br><br>
+            Dals only manage the data sources (database, JSON, files, ....)
+            <br><br>
+            Dals are part of the Server-Side layer and don't know how the Business-Logic works
+          </p>
+        </section>
+        <section>
+          <h3>adapters</h3>
+          <p>
+            At the moment and according to the adapter pattern, adapters are responsible to convert data types between Server-Side and Business-Logic.
+            <br><br>
+            BUT, in a Hexagonal Architecture context, adapters should embed the Dal and be the entry point of the Server-Side layer.
+          </p>
+        </section>
+        <section>
+          <h3>converters</h3>
+          <p>
+            Converters allow us to convert types inside the Business-Logic layer.
+          </p>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
