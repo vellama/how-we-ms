@@ -18,7 +18,7 @@
 			<div class="slides">
 				<section>
           <h2>Hexagonal Architecture</h2>
-          <img src="img/ha_example.png" width="400px" />
+          <img src="img/ha_example.png" width="300px" />
         </section>
 				<section>
           <h2>Hexagonal Architecture principles</h2>
@@ -33,7 +33,7 @@
           <ul>
             <li>Code isolation</li>
             <li>Flexibility with adapters</li>
-            <li>Test are easier</li>
+            <li>Test, maintenability and reusability are easier</li>
           </ul>
         </section>
         <section>
@@ -147,6 +147,65 @@
           <p>
             Converters allow us to convert types inside the Business-Logic layer.
           </p>
+        </section>
+        <section>
+          <h2>Quick look at Clean Architecture</h2>
+          <img src="img/clean_architecture.jpg" width="300px" />
+        </section>
+        <section>
+          <h3>Clean Architecture principles</h3>
+          <ul>
+            <li>Follows Clean Code principles, for architecture to be clean, code has to be clean</li>
+            <li>Follows SOLID principles as Clean Code does</li>
+            <li>Use the Dependency Inversion principle to place boundaries between high and low level components</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Quick words about SOLID</h3>
+          <p>SOLID are the 5 principles of Object Oriented Design</p>
+          <ul>
+            <li>S - Single Responsability Principle</li>
+            <li>O - Open/Closed Principle</li>
+            <li>L - Liskov substitution Principle</li>
+            <li>I - Interface Segregation Principle</li>
+            <li>D - Dependency Inversion Principle</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Single Responsability Principle (S.R.P.)</h3>
+          <blockquote>A class should only have a single responsibility, that is, only changes to one part of the software's specification should be able to affect the specification of the class.</blockquote>
+        </section>
+        <section>
+          <h3>Open/Closed Principle</h3>
+          <blockquote>Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification</blockquote>
+          <ul>
+            <li>A module is Opened until it is used, after that we should not modify it, only extend it</li>
+            <li>A module is Closed since it is used by other modules</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Liskov Subsitution Principle</h3>
+          <blockquote>Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.</blockquote>
+        </section>
+        <section>
+          <h3>Interface Segregation Principle</h3>
+          <blockquote>No client should be forced to depend on methods it does not use</blockquote>
+          <p>You should be able to extend from an interface where you need all its exposed methods.</p>
+        </section>
+        <section>
+          <h3>Dependency Inversion Principle</h3>
+          <blockquote>Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.</blockquote>
+          <ul>
+            <li>Your high levels modules should be able to easily switch their low level modules.</li>
+            <li>Enforces modules to use abstraction instead of concret implementations</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Why don't we use Clean Architecture yet ?</h3>
+          <ul>
+            <li>Imply to be more rigorous</li>
+            <li>Code will get fatter then with Hexagonal, for example, we'll have adapters for routes response too, and you can switch between multiple adapters (JSON, XML, ...)</li>
+          </ul>
         </section>
 			</div>
 		</div>
