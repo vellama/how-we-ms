@@ -1,0 +1,30 @@
+{
+  "name": "@schoolmouv/how-we-ms",
+  "version": "1.0.0",
+  "description": "How we write Micro services",
+  "main": "build/index.js",
+  "scripts": {
+    "src:build": "npm run lint && tsc",
+    "src:watch": "npm run lint && tsc -w",
+    "lint": "eslint . --ext .js,.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vincent ELLAMA <vincent.ellama@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mongodb": "3.5.33",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.1.0",
+    "prettier-config-standard": "1.0.1",
+    "typescript": "3.9.7"
+  },
+  "dependencies": {
+    "mongodb": "3.6.3"
+  }
+}
